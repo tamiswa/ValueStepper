@@ -188,8 +188,8 @@ private enum Button: Int {
         decreaseButton.addTarget(self, action: #selector(selected(_:)), for: .touchDown)
         increaseButton.addTarget(self, action: #selector(selected(_:)), for: .touchDown)
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelPressed(_:)))
-        valueLabel.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelPressed(_:)))
+//        valueLabel.addGestureRecognizer(tapGesture)
     }
 
     // MARK: Storyboard preview setup
@@ -349,22 +349,22 @@ private enum Button: Int {
         }
     }
 
-    @objc func labelPressed(_ sender: UITapGestureRecognizer) {
-        let alertController = UIAlertController(title: "Enter Value", message: nil, preferredStyle: .alert)
-        alertController.addTextField { textField in
-            textField.placeholder = "Value"
-            textField.keyboardType = .decimalPad
-        }
-        alertController.addAction(UIAlertAction(title: "Confirm", style: .default) { _ in
-            if let newString = alertController.textFields?.first?.text, let newValue = Double(newString) {
-                if newValue >= self.minimumValue || newValue <= self.maximumValue {
-                    self.value = newValue
-                }
-            }
-        })
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        getTopMostViewController()?.present(alertController, animated: true, completion: nil)
-    }
+//    @objc func labelPressed(_ sender: UITapGestureRecognizer) {
+//        let alertController = UIAlertController(title: "Enter Value", message: nil, preferredStyle: .alert)
+//        alertController.addTextField { textField in
+//            textField.placeholder = "Value"
+//            textField.keyboardType = .decimalPad
+//        }
+//        alertController.addAction(UIAlertAction(title: "Confirm", style: .default) { _ in
+//            if let newString = alertController.textFields?.first?.text, let newValue = Double(newString) {
+//                if newValue >= self.minimumValue || newValue <= self.maximumValue {
+//                    self.value = newValue
+//                }
+//            }
+//        })
+//        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+//        getTopMostViewController()?.present(alertController, animated: true, completion: nil)
+//    }
 
     // MARK: Actions
 
@@ -416,15 +416,15 @@ private enum Button: Int {
 
     // MARK: Helpers
 
-    func getTopMostViewController() -> UIViewController? {
-        if var topController = UIApplication.shared.keyWindow?.rootViewController {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
-            }
-            return topController
-        }
-        return nil
-    }
+//    func getTopMostViewController() -> UIViewController? {
+//        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+//            while let presentedViewController = topController.presentedViewController {
+//                topController = presentedViewController
+//            }
+//            return topController
+//        }
+//        return nil
+//    }
 }
 
 extension Double {
